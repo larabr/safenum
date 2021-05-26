@@ -2,9 +2,10 @@
 The `go` folder implements a simple test to estimate whether modular exponentiation is (not) constant time. To run the test:
 
 1. clone the tool `dudect` with support for Golang integration (https://github.com/ansemjo/dudect).
-2. copy the content of the `dudect_interface/go` directory into `dudect/dut/go` (replace existing files).
-3. from the `dudect` directory, run `make go` (NB: you need to have `safenum` in your `$GOPATH`). 
-4. from inside `dudect/dut/go`, run the generated executable: `../../dudect_go_-O2`
+2. remove all files in `dudect/dut/go` copy the content of the `dudect_interface/go` directory into `dudect/dut/go`.
+3. In `dudect/Makefile` add the option `-modfile dut/go/go.mod` to the `go build` command
+4. from the `dudect` directory, run `make go`. 
+5. run the generated executable: `./dudect_go_-O2`
 
 To see how the native (non-constant time) `big.Int` implementation compares, edit the `do_one_computation` function in `go/dut_go.go` and call `unsafeExp` instead of `safeExp`.
 
