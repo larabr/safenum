@@ -85,7 +85,7 @@ func prepare_inputs(inputptr *C.uint8_t, classesptr *C.uint8_t) {
 
 // prepare byte slices .. some with zeroes, some with random data
 func prepareData(data *[][]byte, classes *[]byte) {
-
+	// each data[i] is separately passed to `do_one_computation`
 	for i := range *data {
 		(*classes)[i] = randombit()
 		if (*classes)[i] == 1 {
